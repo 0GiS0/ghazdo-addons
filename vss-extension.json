@@ -1,0 +1,35 @@
+{
+    "manifestVersion": 1,
+    "id": "ghazdodecoratorpost",
+    "name": "GHAzDO Decorator",
+    "version": "1.0.8",
+    "publisher": "returngis",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],   
+    "description": "GitHub Advanced Security on Azure DevOps Injection mechanism",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "contributions": [
+        {
+            "id": "my-required-task",
+            "type": "ms.azure-pipelines.pipeline-decorator",
+            "targets": [
+                "ms.azure-pipelines-agent-job.post-job-tasks"
+            ],
+            "properties": {
+                "template": "ghazdo-postjob-decorator.yml"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "ghazdo-postjob-decorator.yml",
+            "addressable": true,
+            "contentType": "text/plain"
+        }
+    ]
+}
