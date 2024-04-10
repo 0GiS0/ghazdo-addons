@@ -1,15 +1,15 @@
 {
     "manifestVersion": 1,
-    "id": "ghazdodecoratorpost",
-    "name": "GHAzDO Decorator",
-    "version": "1.0.8",
+    "id": "pipelinedecoratorpost",
+    "name": "GitHub Advanced Security Decorator",
+    "version": "1.0.19",
     "publisher": "returngis",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],   
-    "description": "GitHub Advanced Security on Azure DevOps Injection mechanism",
+    ],    
+    "description": "This is the example of a Decorator which works with Build and YAML pipelines, and execute AFTER any other task",
     "categories": [
         "Azure Pipelines"
     ],
