@@ -1,33 +1,24 @@
 steps:
 # It checks if the pipeline is running on the default branch and if the job has not already been injected
-- ${{ if and(eq(resources.repositories['self'].ref, resources.repositories['self'].defaultBranch), not(containsValue(job.steps.*.task.id, 'F97AACE4-962A-441B-9141-B842D806B9C7'))) }}:
-# - task: CmdLine@2
-#   inputs:
-#     script: |
-#       echo Welcome to the Ghazdo Decorator!
-#       echo This is a sample pipeline that demonstrates how to inject Advanced Security tasks into your pipeline.
-#   displayName: '(Injected) Welcome Message'
-# - task: CmdLine@2
-#   inputs:
-#     script: |
-#       env | sort
-#   displayName: '(Injected) See Environment Variables'
+# - ${{ if and(eq(resources.repositories['self'].ref, resources.repositories['self'].defaultBranch), not(containsValue(job.steps.*.task.id, 'F97AACE4-962A-441B-9141-B842D806B9C7'))) }}:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Welcome to the Ghazdo Decorator!
+      echo This is a sample pipeline that demonstrates how to inject Advanced Security tasks into your pipeline.
+  displayName: 'Ghazdo Decorator'
 - task: AdvancedSecurity-Dependency-Scanning@1
   displayName: Dependency Scanning (Autoinjected)
-# It checks if the pipeline is running on the default branch and if the job has not already been injected
+#It checks if the pipeline is running on the default branch and if the job has not already been injected
 # - ${{ if and(eq(resources.repositories['self'].ref, resources.repositories['self'].defaultBranch), not(containsValue(job.steps.*.task.id, 'a9efc1ef-3900-494f-a460-963e3f5f6928'))) }}:
-# - task: AdvancedSecurity-CodeQL-Autoconfig@0
-#   displayName: Configure CodeQL Languages (Autoinjected)
-# - task: AdvancedSecurity-CodeQL-Init@1
-#   displayName: Initialize CodeQL Scanning (Autoinjected)
-#   condition: eq(variables['AdvancedSecurity.CodeQL.Autoconfig'], 'true')
-# - task: AdvancedSecurity-CodeQL-Analyze@1
-#   displayName: Perform CodeQL Analysis (Autoinjected)
-#   condition: eq(variables['AdvancedSecurity.CodeQL.Autoconfig'], 'true')
-# - task: AdvancedSecurity-Publish@1
-#   displayName: Publish CodeQL Results (Autoinjected)
-#   condition: eq(variables['AdvancedSecurity.CodeQL.Autoconfig'], 'true')
-- task: DemoTask@0
-  inputs:
-    samplestring: 'Gisela'
-  displayName: 'Demo Task (Autoinjected)'
+- task: AdvancedSecurity-CodeQL-Autoconfig@0
+  displayName: Configure CodeQL Languages (Autoinjected)
+- task: AdvancedSecurity-CodeQL-Init@1
+  displayName: Initialize CodeQL Scanning (Autoinjected)
+  condition: eq(variables['AdvancedSecurity.CodeQL.Autoconfig'], 'true')
+- task: AdvancedSecurity-CodeQL-Analyze@1
+  displayName: Perform CodeQL Analysis (Autoinjected)
+  condition: eq(variables['AdvancedSecurity.CodeQL.Autoconfig'], 'true')
+- task: AdvancedSecurity-Publish@1
+  displayName: Publish CodeQL Results (Autoinjected)
+  condition: eq(variables['AdvancedSecurity.CodeQL.Autoconfig'], 'true')

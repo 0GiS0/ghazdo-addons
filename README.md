@@ -1,9 +1,3 @@
-## Install dependencies
-
-```bash
-npm install
-```
-
 ## Package your extension
 
 ```bash

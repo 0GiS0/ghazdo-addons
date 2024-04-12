@@ -2,17 +2,20 @@
     "manifestVersion": 1,
     "id": "pipelinedecoratorpost",
     "name": "GitHub Advanced Security Decorator",
-    "version": "1.0.19",
+    "version": "1.0.0",
     "publisher": "returngis",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
     ],    
-    "description": "This is the example of a Decorator which works with Build and YAML pipelines, and execute AFTER any other task",
+    "description": "GitHub Advanced Security Injection mechanism",
     "categories": [
         "Azure Pipelines"
     ],
+    "icons": {
+        "default": "images/icon.png"
+    },
     "contributions": [
         {
             "id": "my-required-task",
