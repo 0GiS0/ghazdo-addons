@@ -1,6 +1,6 @@
 steps:
 - task: CheckGHAzDOEnablement@0
-  displayName: Check if GHAzDO is enabled or not (Autoinjected)
+  displayName: Get GHAzDO info (Autoinjected)
 - task: CmdLine@2
   inputs:
     script: |
@@ -13,8 +13,11 @@ steps:
   displayName: Check if GHAzDo is enabled (Autoinjected)
 - task: AdvancedSecurity-Dependency-Scanning@1
   displayName: Dependency Scanning (Autoinjected)
+  condition: eq(variables['advSecEnabled'], 'true')
 - task: AdvancedSecurity-CodeQL-Autoconfig@0
   displayName: Configure CodeQL Languages (Autoinjected)
+  condition: eq(variables['advSecEnabled'], 'true')
+
 - task: AdvancedSecurity-CodeQL-Init@1
   displayName: Initialize CodeQL Scanning (Autoinjected)
   condition: eq(variables['AdvancedSecurity.CodeQL.Autoconfig'], 'true')
