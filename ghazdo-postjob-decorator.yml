@@ -1,16 +1,14 @@
 steps:
-# It checks if the pipeline is running on the default branch and if the job has not already been injected
-# - ${{ if and(eq(resources.repositories['self'].ref, resources.repositories['self'].defaultBranch), not(containsValue(job.steps.*.task.id, 'F97AACE4-962A-441B-9141-B842D806B9C7'))) }}:
-- bash: az devops configure --defaults "organization=$(System.TeamFoundationCollectionUri)" "project=$(System.TeamProject)" --use-git-aliases true
-  displayName: 'Set default Azure DevOps organization and project (Autoinjected)'
-- bash: az devops invoke --area="Management" --resource="RepoEnablement" --route-parameters repository="$(Build.Repository.Name)"  project="$(System.TeamProject)" --api-version '7.2-preview' --query advSecEnabled
-  env:
-    AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
-  displayName: Check if GHAzDO is enabled or not
-- bash: echo "##vso[task.setvariable variable=advSecEnabled]$(az devops invoke --area='Management' --resource='RepoEnablement' --route-parameters repository='$(Build.Repository.Name)'  project='$(System.TeamProject)' --api-version '7.2-preview' --query advSecEnabled)"
-  env:
-    AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
-  displayName: 'Set var for GHAzDO Enablement (Autoinjected)'
+# - bash: az devops configure --defaults organization='$(System.TeamFoundationCollectionUri)' project='$(System.TeamProject)' --use-git-aliases true
+#   displayName: 'Set default Azure DevOps organization and project (Autoinjected)'
+# - bash: az devops invoke --area="Management" --resource="RepoEnablement" --route-parameters repository="$(Build.Repository.Name)"  project="$(System.TeamProject)" --api-version '7.2-preview' --query advSecEnabled
+#   env:
+#     AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+#   displayName: Check if GHAzDO is enabled or not
+# - bash: echo "##vso[task.setvariable variable=advSecEnabled]$(az devops invoke --area='Management' --resource='RepoEnablement' --route-parameters repository='$(Build.Repository.Name)'  project='$(System.TeamProject)' --api-version '7.2-preview' --query advSecEnabled)"
+#   env:
+#     AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+#   displayName: 'Set var for GHAzDO Enablement (Autoinjected)'
 
 - task: CmdLine@2
   inputs:
@@ -22,11 +20,8 @@ steps:
         echo This repo has not been enabled ❌ for Advanced Security.
       fi
   displayName: Check if GHAzDo is enabled (Autoinjected)
-
 - task: AdvancedSecurity-Dependency-Scanning@1
   displayName: Dependency Scanning (Autoinjected)
-#It checks if the pipeline is running on the default branch and if the job has not already been injected
-# - ${{ if and(eq(resources.repositories['self'].ref, resources.repositories['self'].defaultBranch), not(containsValue(job.steps.*.task.id, 'a9efc1ef-3900-494f-a460-963e3f5f6928'))) }}:
 - task: AdvancedSecurity-CodeQL-Autoconfig@0
   displayName: Configure CodeQL Languages (Autoinjected)
 - task: AdvancedSecurity-CodeQL-Init@1
