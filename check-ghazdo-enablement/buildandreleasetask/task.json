@@ -1,0 +1,20 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+    "id": "BBE99256-DEEB-4E80-ABE4-CA95AFEC6434",
+    "name": "CheckGHAzDOEnablement",
+    "friendlyName": "Check GHAS Enablement",
+    "description": "Check if GHAS is enabled for a particular repository",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Gisela Torres",
+    "version": {
+        "Major": 0,
+        "Minor": 8,
+        "Patch": 0
+    },
+    "execution": {
+        "Node16": {
+            "target": "index.js"
+        }
+    }
+}

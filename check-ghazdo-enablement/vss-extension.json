@@ -1,0 +1,34 @@
+{
+    "manifestVersion": 1,
+    "id": "check-ghazdo-enablement",
+    "name": "Check GHAzDO Enablement",
+    "version": "0.0.8",
+    "publisher": "returngis",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Check if GHAzDO is enabled for a particular repository",
+    "categories": [
+        "Azure Pipelines"
+    ],
+   
+    "files": [
+        {
+            "path": "buildandreleasetask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildandreleasetask"
+            }
+        }
+    ]
+}
